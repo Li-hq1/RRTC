@@ -1,0 +1,54 @@
+{
+  "method": {
+    "rank": 2,
+    "blocks": 6,
+    "alpha": 2.4,
+    "mask_ratio": 0.36,
+    "gram_target": 0.3,
+    "mc_weight": 0.1,
+    "reg_weight": 15.0,
+    "lr": 0.017,
+    "seed": 1,
+    "batch_size": 64,
+    "momentum": 0.9,
+    "nesterov": true,
+    "weight_decay": 0.0
+  },
+  "data": {
+    "dataset": "cifar100c",
+    "root": "data",
+    "domains": [
+      "gaussian_noise",
+      "shot_noise",
+      "impulse_noise",
+      "defocus_blur",
+      "glass_blur",
+      "motion_blur",
+      "zoom_blur",
+      "snow",
+      "frost",
+      "fog",
+      "brightness",
+      "contrast",
+      "elastic_transform",
+      "pixelate",
+      "jpeg_compression"
+    ],
+    "severity": 5,
+    "num_examples": 10000,
+    "image_size": 384,
+    "resize_size": 384
+  },
+  "model": {
+    "name": "vit_base_patch16_384",
+    "num_classes": 100,
+    "checkpoint": "assets/cifar100c/source_checkpoint.pt",
+    "statistics": "assets/cifar100c/source_statistics.pt"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "workers": 4,
+    "threads": 4,
+    "cudnn_tf32": true
+  }
+}
